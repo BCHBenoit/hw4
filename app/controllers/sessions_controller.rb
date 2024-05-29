@@ -25,6 +25,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    cookies["user_id"] = nil
+    redirect_to "/login"
   end
 end
   
