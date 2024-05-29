@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     if @users_table_row != nil
       user_password = @users_table_row["password"]
       if BCrypt::Password.new(user_password) == @user_entered_password
+        cookies["user_id"] = @users_table_row["id"]
         redirect_to "/places"
       else
         redirect_to "/login"
