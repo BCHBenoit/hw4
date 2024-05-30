@@ -16,6 +16,7 @@ class PlacesController < ApplicationController
   end
 
   def new
+    @current_user_id_row = User.find_by({"id"=>session["user_id"]})
   end
 
   def create
