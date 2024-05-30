@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
 
   def new
-    @current_user_id_row = User.find_by({"id"=>cookies["user_id"]})
+    @current_user_id_row = User.find_by({"id"=>session["user_id"]})
   end
 
   def create

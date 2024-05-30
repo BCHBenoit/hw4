@@ -4,15 +4,15 @@ class PlacesController < ApplicationController
     @places = Place.all
 
     @users_table = User.all
-    @current_user_id_row = User.find_by({"id"=>cookies["user_id"]})
+    @current_user_id_row = User.find_by({"id"=>session["user_id"]})
   end
 
   def show
     @place = Place.find_by({ "id" => params["id"] })
     @entries = Entry.where({ "place_id" => @place["id"] })
-    @entries_by_userid = @entries.where({"user_id"=>cookies["user_id"]})
+    @entries_by_userid = @entries.where({"user_id"=>session["user_id"]})
 
-    @current_user_id_row = User.find_by({"id"=>cookies["user_id"]})
+    @current_user_id_row = User.find_by({"id"=>session["user_id"]})
   end
 
   def new
